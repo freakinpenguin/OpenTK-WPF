@@ -1,0 +1,21 @@
+﻿<Window x:Class="OpenGLviaFramebuffer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" Background="#FFFFABAB">
+	
+    <Grid>
+        
+        
+        <Image x:Name="image" Source="Automization.png" Stretch="None">
+            <Image.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="MenuItem #1" />
+                    <MenuItem Header="MenuItem #2" />
+                    <MenuItem Header="MenuItem #3" />
+                    <MenuItem Header="MenuItem #4" />
+                </ContextMenu>
+            </Image.ContextMenu>
+        </Image>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Height="39"/>
+    </Grid>
+</Window>
