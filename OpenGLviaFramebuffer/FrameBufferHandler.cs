@@ -69,24 +69,37 @@
                     96, 
                     PixelFormats.Pbgra32, 
                     BitmapPalettes.WebPalette);
-            }
+				readBuf = new byte[this.size.Width*this.size.Height*4];
+			}
 
-            backbuffer.Lock();
+			backbuffer.Lock();
 
-            GL.ReadPixels(
-                0, 
-                0, 
-                this.size.Width, 
-                this.size.Height, 
-                PixelFormat.Bgra, 
-                PixelType.UnsignedByte, 
-                backbuffer.BackBuffer);
+			//GL.ReadPixels(
+			//    0, 
+			//    0, 
+			//    this.size.Width, 
+			//    this.size.Height, 
+			//    PixelFormat.Bgra, 
+			//    PixelType.UnsignedByte, 
+			//    backbuffer.BackBuffer);
 
-            backbuffer.AddDirtyRect(new Int32Rect(0, 0, (int)backbuffer.Width, (int)backbuffer.Height));
+			GL.ReadPixels( 0 , 0 , this.size.Width , this.size.Height , PixelFormat.Bgra , PixelType.UnsignedByte , readBuf );
+
+			// copy pixels upside down
+			var src = new Int32Rect( 0 , 0 , (int)backbuffer.Width , 1 );
+			for ( int y = 0; y<(int)backbuffer.Height; y++ )
+			{
+				src.Y = (int)backbuffer.Height - y - 1;
+				backbuffer.WritePixels( src , readBuf , backbuffer.BackBufferStride , 0 , y );
+			}
+
+			backbuffer.AddDirtyRect(new Int32Rect(0, 0, (int)backbuffer.Width, (int)backbuffer.Height));
             backbuffer.Unlock();
         }
 
-        internal void Prepare(Size framebuffersize)
+		byte[] readBuf;
+
+		internal void Prepare(Size framebuffersize)
         {
             if (GraphicsContext.CurrentContext != this.glControl.Context)
             {
