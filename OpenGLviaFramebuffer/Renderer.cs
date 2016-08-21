@@ -35,57 +35,67 @@ namespace OpenGLviaFramebuffer
 
         public void Render()
         {
-            if (this.displayList <= 0)
-            {
-                this.displayList = GL.GenLists(1);
-                GL.NewList(this.displayList, ListMode.Compile);
+            //if (this.displayList <= 0)
+            //{
+            //    this.displayList = GL.GenLists(1);
+            //    GL.NewList(this.displayList, ListMode.Compile);
 
-                GL.Color3(Color.Red);
+            //    GL.Color3(Color.Red);
 
-                GL.Begin(PrimitiveType.Points);
+            //    GL.Begin(PrimitiveType.Points);
 
-                Random rnd = new Random();
-                for (int i = 0; i < 1000000; i++)
-                {
-                    float factor = 0.2f;
-                    Vector3 position = new Vector3(
-                        rnd.Next(-1000, 1000) * factor, 
-                        rnd.Next(-1000, 1000) * factor, 
-                        rnd.Next(-1000, 1000) * factor);
-                    GL.Vertex3(position);
+            //    Random rnd = new Random();
+            //    for (int i = 0; i < 1000000; i++)
+            //    {
+            //        float factor = 0.2f;
+            //        Vector3 position = new Vector3(
+            //            rnd.Next(-1000, 1000) * factor, 
+            //            rnd.Next(-1000, 1000) * factor, 
+            //            rnd.Next(-1000, 1000) * factor);
+            //        GL.Vertex3(position);
 
-                    position.Normalize();
-                    GL.Normal3(position);
-                }
+            //        position.Normalize();
+            //        GL.Normal3(position);
+            //    }
 
-                GL.End();
+            //    GL.End();
 
-                GL.EndList();
-            }
+            //    GL.EndList();
+            //}
 
-            GL.Enable(EnableCap.Lighting);
-            GL.Enable(EnableCap.Light0);
+            //GL.Enable(EnableCap.Lighting);
+            //GL.Enable(EnableCap.Light0);
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             GL.Enable(EnableCap.DepthTest);
 
-			//GL.ClearColor(Color.LightBlue);
-			GL.ClearColor( 0 , 0 , 0 , 0 );
+			//GL.ClearColor( Color.LightBlue );
+			//GL.ClearColor( 0 , 0 , 0 , 0 );
+			GL.ClearColor( Color.FromArgb( 200 , Color.LightBlue ) );
 			GL.Clear(ClearBufferMask.DepthBufferBit | ClearBufferMask.ColorBufferBit);
 
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
-            float halfWidth = this.size.Width * 0.5f;
-            this.angle += 1f;
-            GL.Rotate(this.angle, Vector3.UnitZ);
-            GL.Rotate(this.angle, Vector3.UnitY);
-            GL.Rotate(this.angle, Vector3.UnitX);
-            GL.Translate(0.5f, 0, 0);
+			//float halfWidth = this.size.Width * 0.5f;
+			//this.angle += 1f;
+			//GL.Rotate(this.angle, Vector3.UnitZ);
+			//GL.Rotate(this.angle, Vector3.UnitY);
+			//GL.Rotate(this.angle, Vector3.UnitX);
+			//GL.Translate(0.5f, 0, 0);
 
-            GL.CallList(this.displayList);
-        }
+			//GL.CallList(this.displayList);
 
-        #endregion
-    }
+			GL.Begin( PrimitiveType.Triangles );
+
+			GL.Color4( Color.FromArgb( 100 , Color.Green ) );
+			GL.Vertex3( 0 , 1 , 0 );  // top of the triangle
+			GL.Vertex3( 1 , 0 , 0 );  // right-bottom of the triangle
+			GL.Vertex3( 0 , 0 , 0 );  // left-bottom of the triangle
+
+			GL.End();
+		}
+
+		#endregion
+	}
 }
