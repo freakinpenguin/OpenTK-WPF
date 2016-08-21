@@ -69,8 +69,9 @@ namespace OpenGLviaFramebuffer
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             GL.Enable(EnableCap.DepthTest);
 
-            GL.ClearColor(Color.LightBlue);
-            GL.Clear(ClearBufferMask.DepthBufferBit | ClearBufferMask.ColorBufferBit);
+			//GL.ClearColor(Color.LightBlue);
+			GL.ClearColor( 0 , 0 , 0 , 0 );
+			GL.Clear(ClearBufferMask.DepthBufferBit | ClearBufferMask.ColorBufferBit);
 
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();

@@ -3,3 +3,5 @@
 ################################################################################
 
 /OpenGLviaFramebuffer/bin/Debug
+/OpenGLviaFramebuffer/obj/Debug
+/OpenGLviaWinformsHost/obj/Debug

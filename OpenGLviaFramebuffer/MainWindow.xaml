@@ -4,9 +4,9 @@
         Title="MainWindow" Height="350" Width="525" Background="#FFFFABAB">
 	
     <Grid>
-        
-        
-        <Image x:Name="image" Source="Automization.png" Stretch="None">
+		<Image Source="Automization.png" Stretch="Fill" />
+
+		<Image x:Name="image" Source="Automization.png" Stretch="None">
             <Image.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="MenuItem #1" />
