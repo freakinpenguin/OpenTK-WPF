@@ -116,45 +116,63 @@
                 GL.DeleteRenderbuffer(this.depthbufferId);
             }
 
-            if (this.textureId > 0)
-            {
-                GL.DeleteTexture(this.textureId);
-            }
+			if ( this.colorbufferId > 0 )
+			{
+				GL.DeleteRenderbuffer( this.colorbufferId );
+			}
 
-            this.textureId = GL.GenTexture();
+			//if ( this.textureId > 0)
+   //         {
+   //             GL.DeleteTexture(this.textureId);
+   //         }
 
-            GL.BindTexture(TextureTarget.Texture2D, this.textureId);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
-            GL.TexParameter(
-                TextureTarget.Texture2D, 
-                TextureParameterName.TextureMinFilter, 
-                (int)TextureMinFilter.Nearest);
-            GL.TexParameter(
-                TextureTarget.Texture2D, 
-                TextureParameterName.TextureMagFilter, 
-                (int)TextureMagFilter.Nearest);
-            GL.TexImage2D(
-                TextureTarget.Texture2D, 
-                0, 
-                PixelInternalFormat.Rgb8, 
-                this.size.Width, 
-                this.size.Height, 
-                0, 
-                PixelFormat.Bgra, 
-                PixelType.UnsignedByte, 
-                IntPtr.Zero);
+   //         this.textureId = GL.GenTexture();
+
+   //         GL.BindTexture(TextureTarget.Texture2D, this.textureId);
+   //         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
+   //         GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
+   //         GL.TexParameter(
+   //             TextureTarget.Texture2D, 
+   //             TextureParameterName.TextureMinFilter, 
+   //             (int)TextureMinFilter.Nearest);
+   //         GL.TexParameter(
+   //             TextureTarget.Texture2D, 
+   //             TextureParameterName.TextureMagFilter, 
+   //             (int)TextureMagFilter.Nearest);
+   //         GL.TexImage2D(
+   //             TextureTarget.Texture2D, 
+   //             0, 
+   //             PixelInternalFormat.Rgb8, 
+   //             this.size.Width, 
+   //             this.size.Height, 
+   //             0, 
+   //             PixelFormat.Bgra, 
+   //             PixelType.UnsignedByte, 
+   //             IntPtr.Zero);
 
             this.framebufferId = GL.GenFramebuffer();
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, this.framebufferId);
-            GL.FramebufferTexture2D(
-                FramebufferTarget.Framebuffer, 
-                FramebufferAttachment.ColorAttachment0, 
-                TextureTarget.Texture2D, 
-                this.textureId, 
-                0);
+			//GL.FramebufferTexture2D(
+			//    FramebufferTarget.Framebuffer, 
+			//    FramebufferAttachment.ColorAttachment0, 
+			//    TextureTarget.Texture2D, 
+			//    this.textureId, 
+			//    0);
 
-            this.depthbufferId = GL.GenRenderbuffer();
+			this.colorbufferId = GL.GenRenderbuffer();
+			GL.BindRenderbuffer( RenderbufferTarget.Renderbuffer , this.colorbufferId );
+			GL.RenderbufferStorage(
+				RenderbufferTarget.Renderbuffer ,
+				RenderbufferStorage.Rgba8 ,
+				this.size.Width ,
+				this.size.Height );
+			GL.FramebufferRenderbuffer(
+				FramebufferTarget.Framebuffer ,
+				FramebufferAttachment.ColorAttachment0 ,
+				RenderbufferTarget.Renderbuffer ,
+				this.colorbufferId );
+
+			this.depthbufferId = GL.GenRenderbuffer();
             GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, this.depthbufferId);
             GL.RenderbufferStorage(
                 RenderbufferTarget.Renderbuffer, 
@@ -176,6 +194,8 @@
             this.loaded = true;
         }
 
-        #endregion
-    }
+		int colorbufferId;
+
+		#endregion
+	}
 }
