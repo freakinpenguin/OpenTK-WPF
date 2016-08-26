@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGLviaFramebuffer", "OpenGLviaFramebuffer\OpenGLviaFramebuffer.csproj", "{AF0E25E1-6F12-4E3A-A698-BE3A7A5AEE54}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGLviaWinformsHost", "OpenGLviaWinformsHost\OpenGLviaWinformsHost.csproj", "{22188DDA-79F1-47C7-A871-530F1D662CEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtkWpfControl", "OtkWpfControl\OtkWpfControl.csproj", "{8D741215-AAAF-4666-AAAA-A5A45F413CC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{22188DDA-79F1-47C7-A871-530F1D662CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22188DDA-79F1-47C7-A871-530F1D662CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22188DDA-79F1-47C7-A871-530F1D662CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D741215-AAAF-4666-AAAA-A5A45F413CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D741215-AAAF-4666-AAAA-A5A45F413CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D741215-AAAF-4666-AAAA-A5A45F413CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D741215-AAAF-4666-AAAA-A5A45F413CC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
