@@ -1,39 +1,48 @@
-﻿
-namespace OpenGLviaFramebuffer
+﻿using System;
+using System.Drawing;
+
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
+
+namespace OtkWpfControl
 {
-    using System;
-    using System.Drawing;
-
-    using OpenTK;
-    using OpenTK.Graphics.OpenGL;
-
     /// <summary>
     /// The renderer.
     /// </summary>
-    public class Renderer
+    public class Scene
     {
-        #region Fields
+		/// <summary>
+		/// initialize the scene
+		/// shaders, buffers, basic OpenGL settings
+		/// </summary>
+		public void Initialize()
+		{
+		}
 
-        private float angle;
-
-        private int displayList;
-
-        private Size size;
-
-        #endregion
-
-        #region Constructors and Destructors
-
-        public Renderer(Size size)
+		/// <summary>
+		/// re-initialize size related staffs
+		/// </summary>
+		/// <param name="width"></param>
+		/// <param name="height"></param>
+		public void Resize( double width , double height )
         {
-            this.size = size;
-        }
+            this.size = new Size( (int)width , (int)height );
 
-        #endregion
+			GL.MatrixMode( MatrixMode.Projection );
+			GL.LoadIdentity();
+			float halfWidth = (float)(this.size.Width / 2);
+			float halfHeight = (float)(this.size.Height / 2);
+			GL.Ortho( -halfWidth , halfWidth , -halfHeight , halfHeight , 1000 , -1000 );
+			GL.Viewport( 0 , 0 , (int)this.size.Width , (int)this.size.Height );
+		}
 
-        #region Public Methods and Operators
-
-        public void Render()
+		/// <summary>
+		/// render a scene , same as OpenGLviaFramebuffer
+		/// it's better to make animation depending on the time, not the interval nor assuming frame rate
+		/// </summary>
+		/// <param name="time"></param>
+		/// <returns></returns>
+		public bool Render( TimeSpan time )
         {
 			if ( this.displayList <= 0 )
 			{
@@ -95,8 +104,18 @@ namespace OpenGLviaFramebuffer
 			GL.Vertex3( 300 , 0 , 0 );  // right-bottom of the triangle
 
 			GL.End();
+
+			return true; // continue animation
 		}
 
-		#endregion
+        #region Fields
+
+        private float angle;
+
+        private int displayList;
+
+        private Size size;
+
+        #endregion
 	}
 }

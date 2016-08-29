@@ -1,0 +1,10 @@
+﻿################################################################################
+# この .gitignore ファイルは Microsoft(R) Visual Studio によって自動的に作成されました。
+################################################################################
+
+/OpenGLviaFramebuffer/bin/Debug
+/OpenGLviaFramebuffer/obj/Debug
+/OpenGLviaWinformsHost/obj/Debug
+/OpenGLviaWinformsHost/bin/Debug
+/OtkWpfControl/bin/Debug
+/OtkWpfControl/obj/Debug

@@ -51,16 +51,16 @@
                 return;
             }
 
-            this.framebufferHandler.Prepare(new Size((int)this.ActualWidth, (int)this.ActualHeight));
+			this.framebufferHandler.Prepare( new Size( (int)this.imageContainer.ActualWidth , (int)this.imageContainer.ActualHeight ) );
 
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadIdentity();
-            float halfWidth = (float)(this.ActualWidth / 2);
-            float halfHeight = (float)(this.ActualHeight / 2);
-            GL.Ortho(-halfWidth, halfWidth, halfHeight, -halfHeight, 1000, -1000);
-            GL.Viewport(0, 0, (int)this.ActualWidth, (int)this.ActualHeight);
+			GL.MatrixMode( MatrixMode.Projection );
+			GL.LoadIdentity();
+			float halfWidth = (float)(this.imageContainer.ActualWidth / 2);
+			float halfHeight = (float)(this.imageContainer.ActualHeight / 2);
+			GL.Ortho( -halfWidth , halfWidth , -halfHeight , halfHeight , 1000 , -1000 );
+			GL.Viewport( 0 , 0 , (int)this.imageContainer.ActualWidth , (int)this.imageContainer.ActualHeight );
 
-            this.renderer.Render();
+			this.renderer.Render();
 
             GL.Finish();
 
