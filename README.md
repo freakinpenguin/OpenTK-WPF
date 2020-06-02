@@ -1,5 +1,6 @@
 OpenTK-WPF
-![](https://github.com/freakinpenguin/OpenTK-WPF/workflows/Continious%20Integration%20Build/badge.svg)
+
+![https://github.com/freakinpenguin/OpenTK-WPF/actions](https://github.com/freakinpenguin/OpenTK-WPF/workflows/Continious%20Integration%20Build/badge.svg)
 ==========
 Examples of how to using OpenGL via OpenTK in WPF applications
 
