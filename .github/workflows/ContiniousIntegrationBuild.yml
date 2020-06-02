@@ -1,4 +1,4 @@
-name: ContiniousIntegrationBuild
+name: Continious Integration Build
 
 on:
   push:
