@@ -1,4 +1,5 @@
 OpenTK-WPF
+https://github.com/freakinpenguin/OpenTK-WPF/workflows/msbuild.yml/badge.svg
 ==========
 Examples of how to using OpenGL via OpenTK in WPF applications
 
